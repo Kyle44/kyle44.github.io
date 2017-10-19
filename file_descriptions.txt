@@ -1,0 +1,20 @@
+------------HTML--------------
+
+main.html -> HOME page setup
+
+------------CSS--------------
+
+CSS/colors.less -> Color variables for styling
+CSS/styles.less -> Styling for the entire Website, using all other LESS files as imports
+CSS/styles.css -> Converted LESS code to CSS through run.sh
+
+CSS/unused.less -> Other things that I can use in the future with LESS, not used though in production
+
+------------JSX--------------
+
+JSX/main.js -> Script for main.html
+
+------------BASH--------------
+
+run.sh -> Converts LESS into CSS, then runs main.html in Google Chrome
+
