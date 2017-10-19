@@ -1,6 +1,6 @@
 ------------HTML--------------
 
-main.html -> HOME page setup
+index.html -> HOME page setup
 
 ------------CSS--------------
 
