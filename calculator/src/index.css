@@ -1,3 +1,12 @@
+div.row{
+	display: flex; /* keeps items in a row */
+}
+
+div.row *{
+	margin: .2em; /* Separation between children in row */
+}
+
+
 body {
   padding: 50px;
   background-color: #66CCFF;
