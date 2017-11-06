@@ -18,9 +18,61 @@
 		
 		var destination = document.querySelector("#container");
 
-		class Letter extends React.Component {
-	        render() {
-		        var letterStyle = {
+		class Square extends React.Component {
+		    render() {
+		        var squareStyle = {
+		            height: 150,
+		            backgroundColor: this.props.color
+		        };
+		         
+		        return(
+		            <div style={squareStyle}>
+		         
+		            </div>
+		        );
+		    }
+		}
+		 
+		class Label extends React.Component {
+		    render() {
+		        var labelStyle = {
+		            fontFamily: "sans-serif",
+		            fontWeight: "bold",
+		            padding: 13,
+		            margin: 0
+		        };
+		         
+		        return (
+		            <p style={labelStyle}>{this.props.color}</p>
+		        );
+		    }
+		}
+		 
+		class Card extends React.Component {
+		    render() {
+		        var cardStyle = {
+		            height: 200,
+		            width: 150,
+		            padding: 0,
+		            backgroundColor: "#FFF",
+		            WebkitFilter: "drop-shadow(0px 0px 5px #666)",
+		            filter: "drop-shadow(0px 0px 5px #666)"
+		        };
+		 
+		        return (
+		            <div style={cardStyle}>
+		                <Square {...this.props}/>
+		                <Label {...this.props}/>
+		            </div>
+		        );
+		    }
+		}
+
+		
+		class Post extends React.Component {
+		    render() {
+		    	var paragraphStyle = {
+		    		/*
 		            padding: 10,
 		            margin: 10,
 		            backgroundColor: this.props.bgcolor,
@@ -29,24 +81,17 @@
 		            fontFamily: "monospace",
 		            fontSize: 32,
 		            textAlign: "center"
+		            */
 		        };
-	            return(
-	                <div style={letterStyle}>
-	                    {this.props.children}
-	                </div>
-	            );
-	        }
-	    }
-				
-		class Buttonify extends React.Component {
-		    render() {
 		        return(
 		            <div>
-		                <button type={this.props.behavior}>{this.props.children}</button>
+		            	<h1>{this.props.title}</h1><br/>
+		            	<p style="paragraphStyle">{this.props.children}</p>
 		            </div>
 		        );
 		    }
 		}
+
 
 		class Link extends React.Component {
 			render(){
@@ -58,17 +103,174 @@
 			}
 		}
 
+		class LightningCounter extends React.Component {
+			constructor(props, context) {
+		        super(props, context);
+		         
+		        this.state = {
+		            strikes: 0
+		        };
+
+		        this.timerTick = this.timerTick.bind(this);
+		    }
+
+		    timerTick() {
+		        this.setState({
+		            strikes: this.state.strikes + 100
+		        });
+		    }
+
+		    componentDidMount() {
+     	   		setInterval(this.timerTick, 1000);
+    		}
+
+            render() {
+                return (
+                    <h1>{this.state.strikes}</h1>
+                );
+            }
+        }
+         
+        class LightningCounterDisplay extends React.Component {
+            render() {
+                var divStyle = {
+                    width: 250,
+                    textAlign: "center",
+                    backgroundColor: "black",
+                    padding: 40,
+                    fontFamily: "sans-serif",
+                    color: "#999",
+                    borderRadius: 10
+                };
+
+                return(
+                    <div style={divStyle}>
+                        <LightningCounter/>
+                    </div>
+                );
+            }
+        }
+
+ 		class Circle extends React.Component {
+            render() {
+                var circleStyle = {
+                    padding: 10,
+                    margin: 20,
+                    display: "inline-block",
+                    backgroundColor: this.props.bgColor,
+                    borderRadius: "50%",
+                    width: 100,
+                    height: 100,
+                };
+ 
+                return (
+                    <div style={circleStyle}>
+                    </div>
+                );
+            }
+        };
+
+
+
+
+ 
+        class Counter extends React.Component {
+		    render() {
+		        var textStyle = {
+		            fontSize: 72,
+		            fontFamily: "sans-serif",
+		            color: "#333",
+		            fontWeight: "bold"
+		        };
+		     
+		        return (
+		            <div style={textStyle}>
+		                {this.props.display}
+		            </div>
+		        );
+		    }
+		}
+		 
+		class CounterParent extends React.Component {
+		    constructor(props) {
+		        super(props);
+		        
+		        this.state = {
+		            count: 0
+		        }
+		 
+		        this.increase = this.increase.bind(this);
+		    }
+		 
+		    increase(e) {
+		    	  var currentCount = this.state.count;
+				 
+				  if (e.shiftKey) {
+				    currentCount += 10;
+				  } else {
+				    currentCount += 1;
+				  }
+		        this.setState({
+		            count: currentCount
+		        })
+		    }
+		     
+		    render() {
+		        var backgroundStyle = {
+		            padding: 50,
+		            backgroundColor: "#FFC53A",
+		            width: 250,
+		            height: 100,
+		            borderRadius: 10,
+		            textAlign: "center"
+		        };
+		     
+		        var buttonStyle = {
+		            fontSize: "1em",
+		            width: 30,
+		            height: 30,
+		            fontFamily: "sans-serif",
+		            color: "#333",
+		            fontWeight: "bold",
+		            lineHeight: "3px"
+		        };
+		 
+		        return (
+		            <div style={backgroundStyle}>
+		                <Counter display={this.state.count}/>
+		                <button onClick={this.increase} style={buttonStyle}>+</button>
+		            </div>
+		        );
+		    }
+		};
+		 
+		ReactDOM.render(
+		    <div>
+		        <CounterParent/>
+		    </div>,
+		    destination
+		);
+
+{/*        ReactDOM.render(
+            <div>
+                <Circle bgColor="#F9C240"/>
+            </div>,
+            destination
+        );
+
+
+        ReactDOM.render(
+            <LightningCounterDisplay/>,
+            document.querySelector("#container")
+        );
+
 		ReactDOM.render(
 	        <div>
-	            <Letter bgcolor="#58B3FF">A</Letter>
-		        <Letter bgcolor="#FF605F">E</Letter>
-		        <Letter bgcolor="#FFD52E">I</Letter>
-		        <Letter bgcolor="#49DD8E">O</Letter>
-		        <Letter bgcolor="#AE99FF">U</Letter>
+	            <Card color="#F88888"/>
 	        </div>,
 	        destination
 	    );
-
+*/}
 		var socialLinksDestination = document.querySelector("#socialLinks");
 
 		ReactDOM.render(
