@@ -19,5 +19,5 @@
     "babel-preset-es2015": "^6.24.1",
     "gh-pages": "^1.0.0"
   },
-  "homepage": "https://kyle44.github.io/calculator/public/"
+  "homepage": "https://kyle44.github.io/calculator/"
 }
