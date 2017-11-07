@@ -7,6 +7,10 @@ var destination = document.querySelector("#container")
   
 ReactDOM.render(
     <div>
+	<div className="row">
+			<CalculatorButton text="squared"/>
+	    	<CalculatorButton text="sqrt"/>
+		</div>
     	<div className="row">
 		    <CalculatorButton text="1"/>
 	        <CalculatorButton text="2"/>
