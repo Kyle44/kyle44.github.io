@@ -1,1 +1,0 @@
-The REACT.js framework is used for the HOME page. 
