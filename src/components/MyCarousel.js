@@ -12,7 +12,6 @@ export default function MyCarousel (
   props
 )
 {
-  console.log(props)
   const myHorses = props.horses.map((item) => <div><h3 style={contentStyle}>{item}</h3></div>)
   return(
   <>
