@@ -1,0 +1,7 @@
+#!/bin/bash
+# Script to clean and execute
+# To initialize -> chmod 755
+
+echo "Cleaning up..." && make clean \
+&& echo "Making..." && make \
+&& echo "Running..." && ./blackjack.out
