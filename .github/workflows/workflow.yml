@@ -20,6 +20,9 @@ jobs:
       - name: Install and build
         run: npm ci && npm run build
 
+      - name: Install and build WishlistWatchers
+        run: cd public/projects/WishlistWatchers && npm ci && npm run  build
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:

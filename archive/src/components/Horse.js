@@ -1,5 +1,5 @@
 
-
+/* props.item.name, props.item.sourceCode, props.item.url */
 
 
 export default function Horse (props) {

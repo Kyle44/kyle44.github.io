@@ -1,5 +1,4 @@
 
 
-rm package-lock.json
-rm -rf node_modules
+sh scripts/delete-packages.sh
 npm i -dd
